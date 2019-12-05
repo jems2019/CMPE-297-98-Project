@@ -15,9 +15,15 @@ The historical data that was collected was historical stock data collected from 
 
 We took the month data frame and graphed the time series data by month, we put multiple values on the image. Open values, close values, and a simple moving average on the data. Which will be talked about below. These images were then passed to the CNN for training and classification. 
 
-3. Used CNN to categorize whether to buy, sell, or hold the stock
+# Used CNN to categorize whether to buy, sell, or hold the stock
 
+We implemented the three separate CNN models to predict whether to buy, sell, or hold a particular stock based on the image. 
 
-# Used TFX Serving
+## Pretrained ResNet Model
+We first used a pretrained resnet model using weights from imagenet with an input shape (224, 224, 3). We used an Adam optimizer with a learning rate of 0.001. The validation accuracy using a resnet model yielded 0.46795. 
 
-We used TFX Serving to train and model with REST. After training our data using a CNN, we saved the models which were then loaded and into a SavedModel format. Then we used TensorFlow serving to make a request. 
+## Building Simple Model
+We then built a simple CNN model with three Convolution 2D layers, two dropout layers, and two dense layers. After running the simple model with the training and validation image datasets, the validation accuracy for this model was 0.4615. 
+
+## Building VGG Model
+We also built a VGG Model to compare its performance compared with the pretrained ResNet model and simple model. The final validation accuracy using a VGG model built from scratch was 0.66239. This shows that using the VGG model performed the best to help make a prediction on whether to buy, sell, or hold the stock.
