@@ -27,3 +27,7 @@ We then built a simple CNN model with three Convolution 2D layers, two dropout l
 
 ##### Building VGG Model
 We also built a VGG Model to compare its performance compared with the pretrained ResNet model and simple model. The final validation accuracy using a VGG model built from scratch was 0.66239. This shows that using the VGG model performed the best to help make a prediction on whether to buy, sell, or hold the stock.
+
+##### Used TFX Serving
+
+We used TFX Serving to train and model with REST. After training our data using a CNN, we saved the models which were then loaded and into a SavedModel format. Then we used TensorFlow serving to make a request. 
